@@ -3,7 +3,7 @@
     --secondary-color: #e1e8f0;
     --white: #ffffff;
     --card-border: #edb52e;
-    --card-para:#8d8d8d;
+    --card-para: #8d8d8d;
     --announcement-line: #e0e0e0;
 }
 
@@ -35,6 +35,10 @@ a {
     text-decoration: none;
 }
 
+svg > title {
+    font-size: 4rem;
+}
+
 .sidebar {
     grid-area: 1/1/3/2;
     position: fixed;
@@ -46,6 +50,7 @@ a {
     display: grid;
     grid-template-rows: 50px 230px 120px;
     gap: 40px;
+    z-index: 100;
 }
 
 .sidebar svg {
@@ -63,7 +68,7 @@ a {
     transform: scale(1.5) perspective(1px);
 }
 
-.sidebar .dashboard a:hover svg{
+.sidebar .dashboard a:hover svg {
     transform: scale(1.2) perspective(1px);
 }
 
@@ -108,11 +113,11 @@ a {
 .sidebar a:hover p::after {
     transform: scaleX(1);
     transform-origin: bottom center;
-} 
+}
 
 .sidebar .dashboard a:hover p::after {
     transform: scaleX(0);
-} 
+}
 
 .header {
     /* border: 1px solid black; */
@@ -120,9 +125,9 @@ a {
     display: grid;
     grid-template-rows: 70px 1fr;
     padding: 0 2rem;
-    position: sticky;
-    align-self: stretch;
-    top: 0;
+    /* position: sticky; */
+    /* align-self: stretch; */
+    /* top: 0; */
     z-index: 2;
     background-color: var(--white);
     box-shadow: 0px 0 8px 0px #888;
@@ -136,14 +141,14 @@ a {
 .header .search-tab {
     display: grid;
     grid-template-columns: 1fr 310px;
-    gap: 5.5rem;
+    gap: clamp(1rem, 6.5vw, 5.5rem);
     /* place-items: center; */
     align-items: center;
-    
-} 
+
+}
 
 .header .search-tab .left {
-    display:grid;
+    display: grid;
     grid-template-columns: 37px repeat(auto-fit, minmax(120px, 1fr));
 }
 
@@ -175,7 +180,7 @@ input[type=search]:focus {
 }
 
 .header .search-tab .right p {
-    font-size: 1.1rem;
+    font-size: 1rem;
     font-weight: bold;
 }
 
@@ -185,7 +190,7 @@ input[type=search]:focus {
 
 .header .account-tab {
     display: grid;
-    grid-template-columns: 2fr 370px;
+    grid-template-columns: 3fr 1fr;
 }
 
 .header .left img {
@@ -196,18 +201,18 @@ input[type=search]:focus {
 
 .header .account-tab .left {
     display: grid;
-    grid-template-columns:  auto 1fr;
+    grid-template-columns: auto 1fr;
     gap: 15px;
     align-items: center;
 }
 
-.header .account-tab .left  p {
+.header .account-tab .left p {
     font-size: .8rem;
     font-weight: bold;
 }
 
-.header .account-tab .left  p + p {
-    font-size: clamp(1.1rem, 1.5vw, 1.3rem);
+.header .account-tab .left p+p {
+    font-size: clamp(1rem, 1.5vw, 1.2rem);
 
 }
 
@@ -215,10 +220,10 @@ input[type=search]:focus {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
     place-items: center;
-    gap: 1.5rem;
+    gap: clamp(1.5rem, 3vw, 3rem);
 }
 
-.header .account-tab .right button{
+.header .account-tab .right button {
     padding: .5rem 1.5rem;
     border-radius: 50px;
     background-color: var(--primary-color);
@@ -256,7 +261,7 @@ input[type=search]:focus {
     padding: .8rem 0;
 }
 
-.main-content .left h3{
+.main-content .left h3 {
     font-size: 1.2rem;
 }
 
@@ -272,12 +277,13 @@ input[type=search]:focus {
     border-left: solid 10px var(--card-border);
     display: grid;
     grid-template-rows: 30px 1fr 30px;
+    box-shadow: 0px 1px 5px 0px #888;
 }
 
 .main-content .left .card .icons {
     justify-self: end;
-    display:grid ;
-    grid-template-columns: repeat(3,1fr);
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
     gap: 1.5rem;
     margin: 1rem 1rem 0 0;
 }
@@ -302,16 +308,16 @@ input[type=search]:focus {
     border-radius: 8px;
     display: grid;
     grid-template-rows: repeat(3, 1fr);
+    box-shadow: 0px 1px 5px 0px #888;
 }
 
-.main-content .right .card-right-top div + div {
+.main-content .right .card-right-top div+div {
     border-top: 1px solid var(--announcement-line);
 }
 
 .main-content .right .card-right-top div,
-.main-content .right .card-right-top div + div,
-.main-content .right .card-right-top div + div + div 
-{
+.main-content .right .card-right-top div+div,
+.main-content .right .card-right-top div+div+div {
     padding-top: 1rem;
 }
 
@@ -321,20 +327,203 @@ input[type=search]:focus {
     padding: 2rem 1.5rem;
     gap: 1.5rem;
     border-radius: 8px;
+    box-shadow: 0px 1px 5px 0px #888;
+
 }
 
-.main-content .right .card-right-bottom  > div {
+.main-content .right .card-right-bottom>div {
     display: grid;
     grid-template-columns: auto 1fr;
     gap: .8rem;
-    place-items: center;
+    align-items: center;
 }
 
-.main-content .right .card-right-bottom div > p:first-child {
+.main-content .right .card-right-bottom div>p:first-child {
     color: inherit;
 }
 
-.main-content .right .card-right-bottom div > p {
+.main-content .right .card-right-bottom div>p {
     font-size: .9rem;
+}
 
+@media screen and (max-width: 900px) {
+    .container {
+        grid-template-columns: 60px 1fr;
+    }
+
+    .sidebar {
+        width: 60px;
+        grid-template-rows: repeat(3, 1fr 2fr 2fr);
+        gap: 3.7rem;
+    }
+
+    .sidebar .dashboard p,
+    .sidebar .menu p,
+    .sidebar .settings p {
+        display: none;
+    }
+
+    .sidebar a {
+        grid-template-columns: 1fr;
+    }
+
+    .sidebar svg {
+        height: 30px;
+    }
+
+    .sidebar .dashboard ul,
+    .sidebar .menu ul,
+    .sidebar .settings ul {
+        display: grid;
+        gap: 1rem;
+    }
+}
+
+@media screen and (max-width: 670px) {
+    .container {
+        grid-template-rows: auto 1fr;
+    }
+
+    .header {
+       grid-template-rows: 1fr 1fr;
+       padding: 1.5rem .5rem;
+       gap: 1rem;
+    }
+
+    .header .account-tab {
+        grid-area: 1/2/2/4;
+    }
+   
+    .header .search-tab {
+        display: grid;
+        grid-template-columns: 1fr 70px;
+        /* grid-template-rows: 1fr; */
+        gap: 1rem;
+        /* place-items: center; */
+        align-items: center;
+        grid-area: 2/2/3/4;
+    }
+
+    .header .search-tab .right {
+        grid-template-columns: 1fr;
+    }
+    
+    .header .search-tab .right p {
+        display: none;
+    }
+
+    .header .search-tab .right img {
+        display: none;
+    }
+    
+    .header .left img {
+        height: 50px;
+        width: 50px;
+        border-radius: 50%;
+    }
+
+    .header .account-tab .left {
+        grid-template-columns: auto;
+        gap: .3rem;
+    }
+
+    .header .account-tab .right {
+        display: grid;
+        place-items: start;
+        gap: clamp(.5rem, 1vw, .8rem);
+        
+    }
+
+    .header .account-tab .right button {
+        padding: .2rem .8rem;
+        font-size: clamp(.7rem, 1vw, 1rem);
+    
+    }
+
+    .main-content {
+        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    }
+
+    .main-content .right .card-right-bottom {
+        background-color: var(--white);
+        gap: 1.5rem;
+        border-radius: 8px;
+        grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+     
+    }
+
+
+}
+
+@media screen and (max-width: 450px)  {
+    
+    /* .main-content,
+    .header {
+        display: none;
+    } */
+
+    /* .container {
+        grid-template-columns: 1fr;
+        height: 100vh;
+    } */
+
+    .container {
+        grid-template-columns: 1fr;
+    }
+
+    .header {
+        grid-template-rows: 1fr 1fr;
+        padding: 1rem .5rem .5rem 0rem;
+        gap: 1rem;
+     }
+
+    .header .account-tab {
+        display: grid;
+        grid-template-columns: auto auto 1fr;
+        gap: 2rem;
+    }
+
+    .header .account-tab > svg {
+        height: 50px;
+        fill: var(--primary-color);
+        margin-left: -10px;
+    }
+
+    .header .account-tab .left p {
+        display: none;
+    }
+
+    .header .account-tab .right {
+        display: grid;
+        place-items: center;
+        gap: clamp(.5rem, 1vw, .8rem);
+        
+    }
+
+    .sidebar {
+        width: 100%;
+       display: none;
+        grid-template-rows: repeat(3, 1fr 2fr 2fr);
+        gap: 3.7rem;
+        position: relative;
+    }
+
+    .sidebar .dashboard p,
+    .sidebar .menu p,
+    .sidebar .settings p {
+        display: inherit;
+    }
+
+    .sidebar a {
+        grid-template-columns: 1fr 4fr;
+        padding-left: 2rem;
+        
+    }
+
+    .sidebar > svg {
+        position: absolute;
+        height: 50px;
+        right: 1rem;
+        top: .8rem;
+    }
 }
