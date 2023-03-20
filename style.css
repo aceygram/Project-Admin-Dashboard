@@ -64,6 +64,10 @@ svg > title {
     transform: scale(1);
 }
 
+.sidebar > svg {
+   display: none;
+}
+
 .sidebar a:hover svg {
     transform: scale(1.5) perspective(1px);
 }
@@ -238,6 +242,10 @@ input[type=search]:focus {
 .header .account-tab .right button:hover {
     background-color: var(--white);
     color: var(--primary-color);
+}
+
+.header .account-tab > svg {
+    display: none;
 }
 
 .main-content {
@@ -457,10 +465,11 @@ input[type=search]:focus {
 
 @media screen and (max-width: 450px)  {
     
-    /* .main-content,
+    .main-content,
     .header {
-        display: none;
-    } */
+        transition: 1s;
+        /* transform: translateX(-100%); */
+    }
 
     /* .container {
         grid-template-columns: 1fr;
@@ -475,6 +484,7 @@ input[type=search]:focus {
         grid-template-rows: 1fr 1fr;
         padding: 1rem .5rem .5rem 0rem;
         gap: 1rem;
+        
      }
 
     .header .account-tab {
@@ -487,6 +497,8 @@ input[type=search]:focus {
         height: 50px;
         fill: var(--primary-color);
         margin-left: -10px;
+        cursor: pointer;
+        display: inherit;
     }
 
     .header .account-tab .left p {
@@ -502,10 +514,11 @@ input[type=search]:focus {
 
     .sidebar {
         width: 100%;
-       display: none;
+        display: none;
         grid-template-rows: repeat(3, 1fr 2fr 2fr);
         gap: 3.7rem;
         position: relative;
+        transition: 1s;
     }
 
     .sidebar .dashboard p,
@@ -525,5 +538,7 @@ input[type=search]:focus {
         height: 50px;
         right: 1rem;
         top: .8rem;
+        cursor: pointer;
+        display: inherit;
     }
 }
